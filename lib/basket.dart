@@ -38,8 +38,8 @@ class Basket extends SpriteComponent
 
       gameRef.score += 1;
 
-      gameRef.overlays.remove(Score.id);
-      gameRef.overlays.add(Score.id);
+      gameRef.overlays.remove(ScoreAndLife.id);
+      gameRef.overlays.add(ScoreAndLife.id);
     }
   }
 

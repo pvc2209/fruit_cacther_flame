@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:lottie/lottie.dart';
 
@@ -65,34 +66,34 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    // SizedBox(height: 20),
-                    // GestureDetector(
-                    //   onTap: () {
-                    //     SystemNavigator.pop();
-                    //   },
-                    //   child: SizedBox(
-                    //     width: MediaQuery.of(context).size.width * 0.3,
-                    //     child: Image.asset(
-                    //       "assets/images/exit.png",
-                    //     ),
-                    //   ),
-                    // ),
                     SizedBox(height: 20),
                     GestureDetector(
-                      onTap: () async {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => UpgradePage(),
-                          ),
-                        );
+                      onTap: () {
+                        SystemNavigator.pop();
                       },
                       child: SizedBox(
                         width: MediaQuery.of(context).size.width * 0.3,
                         child: Image.asset(
-                          "assets/images/upgrade.png",
+                          "assets/images/exit.png",
                         ),
                       ),
                     ),
+                    // SizedBox(height: 20),
+                    // GestureDetector(
+                    //   onTap: () async {
+                    //     Navigator.of(context).push(
+                    //       MaterialPageRoute(
+                    //         builder: (context) => UpgradePage(),
+                    //       ),
+                    //     );
+                    //   },
+                    //   child: SizedBox(
+                    //     width: MediaQuery.of(context).size.width * 0.3,
+                    //     child: Image.asset(
+                    //       "assets/images/upgrade.png",
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),

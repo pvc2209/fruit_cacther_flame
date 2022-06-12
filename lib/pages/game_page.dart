@@ -26,8 +26,8 @@ class GamePage extends StatelessWidget {
           HomeButton.id: (BuildContext context, FruitCatcherGame gameRef) {
             return HomeButton();
           },
-          Score.id: (BuildContext context, FruitCatcherGame gameRef) {
-            return Score(
+          ScoreAndLife.id: (BuildContext context, FruitCatcherGame gameRef) {
+            return ScoreAndLife(
               gameRef: gameRef,
             );
           },
@@ -39,7 +39,7 @@ class GamePage extends StatelessWidget {
         },
         // Không gọi overlays.add() ở bên trong onload() của game (gọi ở đấy sẽ ko working),
         // mà phải dùng initialActiveOverlays
-        initialActiveOverlays: const [HomeButton.id, Score.id],
+        initialActiveOverlays: const [HomeButton.id, ScoreAndLife.id],
 
         backgroundBuilder: (context) {
           return Container(
@@ -58,7 +58,6 @@ class GamePage extends StatelessWidget {
 
 class FruitCatcherGame extends FlameGame
     with HasCollisionDetection, TapDetector, HasDraggables {
-  // final SpriteComponent background = SpriteComponent();
   final Basket basket = Basket();
   final List<Fruit> fruits = [];
 
@@ -66,19 +65,13 @@ class FruitCatcherGame extends FlameGame
 
   int numberOfFruits = 9;
   int score = 0;
-  // int life = 10;
+  int life = 10;
   bool canSpeedUp = true;
 
   List<Vector2> randomFruitPositions = [];
 
   @override
   Future<void>? onLoad() async {
-    // background
-    //   ..sprite = await loadSprite("bg.jpg")
-    //   ..size = size;
-
-    // add(background);
-
     basket
       ..sprite = await loadSprite("basket.png")
       ..size = Vector2(100, 100)
@@ -133,14 +126,14 @@ class FruitCatcherGame extends FlameGame
       // Update the fruit's position
       for (int i = 0; i < fruits.length; ++i) {
         if (fruits[i].visible == true && fruits[i].y > size.y) {
-          // life--;
-          overlays.remove(Score.id);
-          overlays.add(Score.id);
+          life--;
+          overlays.remove(ScoreAndLife.id);
+          overlays.add(ScoreAndLife.id);
 
-          // if (life <= 0) {
-          //   gameOver = true;
-          //   overlays.add(GameOver.id);
-          // }
+          if (life <= 0) {
+            gameOver = true;
+            overlays.add(GameOver.id);
+          }
         }
 
         if (fruits[i].y > size.y) {
@@ -156,7 +149,7 @@ class FruitCatcherGame extends FlameGame
       // update fruit y speed
       if (score > 0 && score % 10 == 0) {
         if (canSpeedUp) {
-          // life++;
+          life++;
           for (final fruit in fruits) {
             if (fruit.velocity.y <= 220) {
               fruit.velocity.y += 10;
