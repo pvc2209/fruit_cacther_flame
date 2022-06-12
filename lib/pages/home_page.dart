@@ -1,9 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:fruit_catcher_oz/spref/spref.dart';
 import 'package:lottie/lottie.dart';
 
 import '../dodo_in_app/upgrade_page.dart';
@@ -53,19 +51,10 @@ class HomePage extends StatelessWidget {
                     ),
                     const SizedBox(height: 20),
                     GestureDetector(
-                      onTap: () async {
-                        int? seconds = await SPref.instance.getInt("seconds");
-
-                        if (seconds == null) {
-                          await SPref.instance.setInt("seconds", 10);
-                          seconds = 10;
-                        }
-
+                      onTap: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => GamePage(
-                              seconds: seconds!,
-                            ),
+                            builder: (context) => GamePage(),
                           ),
                         );
                       },

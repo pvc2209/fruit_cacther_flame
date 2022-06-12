@@ -1,6 +1,6 @@
 import 'package:flame/flame.dart';
 import 'package:flutter/material.dart';
-import 'package:fruit_catcher_oz/pages/home_page.dart';
+import 'pages/home_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

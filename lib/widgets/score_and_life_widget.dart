@@ -2,17 +2,17 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'package:fruit_catcher_oz/pages/game_page.dart';
+import '../pages/game_page.dart';
+
+import '../spref/spref.dart';
 
 class Score extends StatefulWidget {
   static const String id = "Score";
   final FruitCatcherGame gameRef;
-  final int seconds;
 
   const Score({
     Key? key,
     required this.gameRef,
-    required this.seconds,
   }) : super(key: key);
 
   @override
@@ -20,24 +20,33 @@ class Score extends StatefulWidget {
 }
 
 class _ScoreState extends State<Score> {
-  late int timeRemaining;
+  int? timeRemaining;
 
   late Timer timer;
   @override
   void initState() {
     super.initState();
 
-    timeRemaining = widget.seconds * 1000;
+    WidgetsBinding.instance!.addPostFrameCallback((_) async {
+      int? seconds = await SPref.instance.getInt("seconds");
 
-    timer = Timer.periodic(const Duration(milliseconds: 10), (timer) {
-      setState(() {
-        timeRemaining -= 10;
-      });
-
-      if (timeRemaining <= 0) {
-        timer.cancel();
-        widget.gameRef.endGame();
+      if (seconds == null) {
+        SPref.instance.setInt("seconds", 10);
+        seconds = 10;
       }
+
+      timeRemaining = seconds * 1000;
+
+      timer = Timer.periodic(const Duration(milliseconds: 10), (timer) {
+        setState(() {
+          timeRemaining = timeRemaining! - 10;
+        });
+
+        if (timeRemaining! <= 0) {
+          timer.cancel();
+          widget.gameRef.endGame();
+        }
+      });
     });
   }
 
@@ -85,7 +94,9 @@ class _ScoreState extends State<Score> {
                 //   ),
                 // ),
                 Text(
-                  "${(timeRemaining / 1000).toStringAsFixed(2)} ",
+                  timeRemaining == null
+                      ? "0.00"
+                      : "${(timeRemaining! / 1000).toStringAsFixed(2)} ",
                   style: TextStyle(
                     fontSize: 32,
                     color: Colors.green,

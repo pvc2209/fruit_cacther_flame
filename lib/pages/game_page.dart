@@ -5,8 +5,8 @@ import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 
-import 'package:fruit_catcher_oz/widgets/game_over.dart';
-import 'package:fruit_catcher_oz/widgets/score_and_life_widget.dart';
+import '../widgets/game_over.dart';
+import '../widgets/score_and_life_widget.dart';
 
 import '../basket.dart';
 import '../fruit.dart';
@@ -15,10 +15,7 @@ import '../widgets/home_button.dart';
 class GamePage extends StatelessWidget {
   const GamePage({
     Key? key,
-    required this.seconds,
   }) : super(key: key);
-
-  final int seconds;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +29,6 @@ class GamePage extends StatelessWidget {
           Score.id: (BuildContext context, FruitCatcherGame gameRef) {
             return Score(
               gameRef: gameRef,
-              seconds: seconds,
             );
           },
           GameOver.id: (BuildContext context, FruitCatcherGame gameRef) {

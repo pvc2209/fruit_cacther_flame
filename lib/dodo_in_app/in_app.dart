@@ -88,7 +88,7 @@ class DodoInApp extends GetxController {
     await FlutterInappPurchase.instance.requestPurchase(item.productId!);
   }
 
-  void buyBuyId(String productId) async {
+  void buyById(String productId) async {
     isLoading.value = true;
 
     // Xử lý ngoại lệ khi bấm mua nhưng lại cancel (chỉ áp dụng cho amazon)

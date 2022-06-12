@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rotated_corner_decoration/rotated_corner_decoration.dart';
 
-import '../spref/spref.dart';
 import 'in_app.dart';
 import 'in_app_constant.dart';
 import 'profile_clipper.dart';
@@ -143,7 +142,7 @@ class _UpgradePageState extends State<UpgradePage> {
                                   onPressed: _inApp
                                           .isProductReady(kConsumables[index])
                                       ? () {
-                                          _inApp.buyBuyId(kConsumables[index]);
+                                          _inApp.buyById(kConsumables[index]);
                                         }
                                       : null,
                                   child: const Text("Buy"),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fruit_catcher_oz/pages/game_page.dart';
+import '../pages/game_page.dart';
 
 class GameOver extends StatelessWidget {
   static const String id = "GameOver";

@@ -1,8 +1,8 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
-import 'package:fruit_catcher_oz/fruit.dart';
 
+import 'fruit.dart';
 import 'pages/game_page.dart';
 import 'widgets/score_and_life_widget.dart';
 
