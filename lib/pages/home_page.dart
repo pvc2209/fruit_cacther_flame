@@ -1,11 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:lottie/lottie.dart';
 
-import '../dodo_in_app/upgrade_page.dart';
 import 'game_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -41,7 +38,7 @@ class HomePage extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.8,
                       child: Text(
-                        "Fruit Catcher",
+                        "Flowers Catcher",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 48,
@@ -66,18 +63,18 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
-                    GestureDetector(
-                      onTap: () {
-                        SystemNavigator.pop();
-                      },
-                      child: SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.3,
-                        child: Image.asset(
-                          "assets/images/exit.png",
-                        ),
-                      ),
-                    ),
+                    // SizedBox(height: 20),
+                    // GestureDetector(
+                    //   onTap: () {
+                    //     SystemNavigator.pop();
+                    //   },
+                    //   child: SizedBox(
+                    //     width: MediaQuery.of(context).size.width * 0.3,
+                    //     child: Image.asset(
+                    //       "assets/images/exit.png",
+                    //     ),
+                    //   ),
+                    // ),
                     // SizedBox(height: 20),
                     // GestureDetector(
                     //   onTap: () async {

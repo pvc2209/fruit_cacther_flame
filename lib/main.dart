@@ -11,6 +11,7 @@ void main() {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomePage(),
+      title: "Flowers Catcher",
     ),
   );
 }
