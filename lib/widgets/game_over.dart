@@ -39,7 +39,7 @@ class GameOver extends StatelessWidget {
                 Navigator.of(context).pop();
               },
               icon: Icon(
-                Icons.refresh,
+                Icons.home,
                 color: Colors.white,
               ),
               iconSize: 80,

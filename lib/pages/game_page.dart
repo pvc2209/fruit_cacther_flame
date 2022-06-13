@@ -65,7 +65,7 @@ class FruitCatcherGame extends FlameGame
 
   bool gameOver = false;
 
-  int numberOfFruits = 9;
+  int numberOfFruits = 10;
   int score = 0;
   int life = 10;
   bool canSpeedUp = true;

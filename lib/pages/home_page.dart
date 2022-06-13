@@ -43,7 +43,7 @@ class HomePage extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 48,
                           fontWeight: FontWeight.w900,
-                          color: Colors.green,
+                          color: Colors.red,
                         ),
                       ),
                     ),
