@@ -23,6 +23,7 @@ class _ScoreState extends State<Score> {
   int? timeRemaining;
 
   late Timer timer;
+
   @override
   void initState() {
     super.initState();

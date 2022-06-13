@@ -62,9 +62,11 @@ class FruitCatcherGame extends FlameGame
   final Basket basket = Basket();
   final List<Fruit> fruits = [];
 
+  late Fruit lastFruit; // fruit have lowest y
+
   bool gameOver = false;
 
-  int numberOfFruits = 9;
+  int numberOfFruits = 10;
   int score = 0;
   // int life = 10;
   bool canSpeedUp = true;
@@ -87,10 +89,14 @@ class FruitCatcherGame extends FlameGame
       // ..debugMode = true
       ..anchor = Anchor.topLeft;
 
-    for (int i = 0; i < numberOfFruits; i++) {
+    // Random vi tri fruits
+    randomFruitPositions
+        .add(Vector2(Random().nextInt(size.x.toInt() - 80).toDouble(), -100));
+
+    for (int i = 1; i < numberOfFruits; i++) {
       Vector2 position = Vector2(
         Random().nextInt(size.x.toInt() - 80).toDouble(),
-        -(size.y / numberOfFruits * i),
+        randomFruitPositions[i - 1].y - 100,
       );
 
       randomFruitPositions.add(position);
@@ -111,6 +117,8 @@ class FruitCatcherGame extends FlameGame
     for (final fruit in fruits) {
       add(fruit);
     }
+
+    lastFruit = fruits.last;
 
     add(basket);
 
@@ -145,7 +153,10 @@ class FruitCatcherGame extends FlameGame
 
         if (fruits[i].y > size.y) {
           fruits[i].x = Random().nextInt(size.x.toInt() - 80).toDouble();
-          fruits[i].y = -80;
+
+          fruits[i].y = lastFruit.y - 100;
+
+          lastFruit = fruits[i];
 
           fruits[i].visible = true;
         } else {
