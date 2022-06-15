@@ -56,7 +56,7 @@ class DodoInApp extends GetxController {
         int? seconds = await SPref.instance.getInt("seconds");
 
         if (seconds == null) {
-          SPref.instance.setInt("seconds", 10);
+          SPref.instance.setInt("seconds", 10 + index + 1);
         } else {
           SPref.instance.setInt("seconds", seconds + index + 1);
         }

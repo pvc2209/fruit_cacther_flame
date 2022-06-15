@@ -1,4 +1,4 @@
-package com.olenov.fruit_catcher_oz_test
+package com.olenovc.fruit_catcher_oz
 
 import io.flutter.embedding.android.FlutterActivity
 
