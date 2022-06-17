@@ -46,7 +46,11 @@ class DodoInApp extends GetxController {
       if (kConsumables.contains(productItem!.productId)) {
         // Với amazon không cần consume
         if (!useAmazon) {
-          await FlutterInappPurchase.instance.finishTransaction(productItem);
+          await FlutterInappPurchase.instance
+              .consumePurchaseAndroid(productItem.purchaseToken!);
+
+          // Phải gọi consumePurchaseAndroid(productItem.purchaseToken!) mới được
+          // còn dùng finishTransaction(productItem) sẽ bị lỗi đã you've own this item
         }
 
         int index = kConsumables.indexOf(productItem.productId!);
