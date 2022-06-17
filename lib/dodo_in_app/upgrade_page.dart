@@ -17,6 +17,7 @@ class _UpgradePageState extends State<UpgradePage> {
   final DodoInApp _inApp = Get.put(
     DodoInApp(
       useAmazon: false,
+      enableSub: true,
     ),
   );
 
@@ -98,6 +99,25 @@ class _UpgradePageState extends State<UpgradePage> {
                     ),
                   ],
                 ),
+                // Subscription------------------
+                Obx(
+                  () => ListTile(
+                    title: Text(
+                      "Upgrade to Premium",
+                      style: const TextStyle(fontSize: 24),
+                    ),
+                    trailing: ElevatedButton(
+                      onPressed: _inApp.isProductReady(kUpgrade)
+                          ? () {
+                              _inApp.buySubById(kUpgrade);
+                            }
+                          : null,
+                      child: const Text("Buy"),
+                    ),
+                    subtitle: Text(_inApp.getPrice(kUpgrade)),
+                  ),
+                ),
+                //--------------------------------
                 Expanded(
                   child: ListView.builder(
                     itemCount: kConsumables.length,

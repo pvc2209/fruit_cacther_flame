@@ -46,8 +46,7 @@ class DodoInApp extends GetxController {
       if (kConsumables.contains(productItem!.productId)) {
         // Với amazon không cần consume
         if (!useAmazon) {
-          await FlutterInappPurchase.instance
-              .consumePurchaseAndroid(productItem.purchaseToken!);
+          await FlutterInappPurchase.instance.finishTransaction(productItem);
         }
 
         int index = kConsumables.indexOf(productItem.productId!);
@@ -60,9 +59,16 @@ class DodoInApp extends GetxController {
         } else {
           SPref.instance.setInt("seconds", seconds + index + 1);
         }
+      } else {
+        // await FlutterInappPurchase.instance.acknowledgePurchaseAndroid(
+        //   productItem.purchaseToken!,
+        // );
 
-        isLoading.value = false;
+        // Gọi acknowledgePurchaseAndroid cũng được nhưng gọi finishTransaction cho chắc ăn
+        // vì finishTransaction sẽ "Send finishTransaction call that abstracts all acknowledgePurchaseAndroid, finishTransactionIOS, consumePurchaseAndroid methods."
+        await FlutterInappPurchase.instance.finishTransaction(productItem);
       }
+      isLoading.value = false;
     });
 
     _purchaseErrorSubscription =
@@ -94,6 +100,17 @@ class DodoInApp extends GetxController {
     // Xử lý ngoại lệ khi bấm mua nhưng lại cancel (chỉ áp dụng cho amazon)
     try {
       await FlutterInappPurchase.instance.requestPurchase(productId);
+    } on PlatformException catch (_) {
+      isLoading.value = false;
+    }
+  }
+
+  void buySubById(String productId) async {
+    isLoading.value = true;
+
+    // Xử lý ngoại lệ khi bấm mua nhưng lại cancel (chỉ áp dụng cho amazon)
+    try {
+      await FlutterInappPurchase.instance.requestSubscription(productId);
     } on PlatformException catch (_) {
       isLoading.value = false;
     }
