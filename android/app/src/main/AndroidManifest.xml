@@ -1,9 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.olenov.fruit_catcher_oz_test">
+    package="com.bebe.flowers_catcher_sc">
     <uses-permission android:name="com.android.vending.BILLING"/>
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="Fruit Catcher OZ"
+        android:label="Flowers Catcher SC"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
@@ -27,6 +27,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <receiver android:name = "com.amazon.device.iap.ResponseReceiver" >
+            <intent-filter>
+                <action android:name = "com.amazon.inapp.purchasing.NOTIFY"
+                    android:permission = "com.amazon.inapp.purchasing.Permission.NOTIFY" />
+            </intent-filter>
+        </receiver>
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <meta-data

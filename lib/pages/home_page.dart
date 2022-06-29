@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
+import '../dodo_in_app/upgrade_page.dart';
 import 'game_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -75,22 +76,22 @@ class HomePage extends StatelessWidget {
                     //     ),
                     //   ),
                     // ),
-                    // SizedBox(height: 20),
-                    // GestureDetector(
-                    //   onTap: () async {
-                    //     Navigator.of(context).push(
-                    //       MaterialPageRoute(
-                    //         builder: (context) => UpgradePage(),
-                    //       ),
-                    //     );
-                    //   },
-                    //   child: SizedBox(
-                    //     width: MediaQuery.of(context).size.width * 0.3,
-                    //     child: Image.asset(
-                    //       "assets/images/upgrade.png",
-                    //     ),
-                    //   ),
-                    // ),
+                    SizedBox(height: 20),
+                    GestureDetector(
+                      onTap: () async {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => UpgradePage(),
+                          ),
+                        );
+                      },
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.3,
+                        child: Image.asset(
+                          "assets/images/upgrade.png",
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),

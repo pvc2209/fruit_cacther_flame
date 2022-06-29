@@ -40,6 +40,8 @@ dependencies:
   rotated_corner_decoration: ^2.0.0
   flutter_launcher_icons: ^0.9.2
   get: 4.6.1
+  flutter_inapp_purchase:
+    git: https://github.com/pvc2209/flutter_inapp_purchase_amazon
 
 flutter_icons:
   android: "launcher_icon"

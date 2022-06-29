@@ -11,6 +11,9 @@ void main() {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomePage(),
+      theme: ThemeData(
+        primaryColor: Colors.red,
+      ),
       title: "Flowers Catcher",
     ),
   );
